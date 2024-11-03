@@ -1,11 +1,12 @@
-package sk.uniba.fmph.dcs;
+package sk.uniba.fmph.dcs.game_board;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.OptionalInt;
 import org.junit.Test;
+
+import sk.uniba.fmph.dcs.stone_age.Effect;
 
 public class SimpleBuildingTest {
   @Test

@@ -1,10 +1,12 @@
-package sk.uniba.fmph.dcs;
+package sk.uniba.fmph.dcs.game_board;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.OptionalInt;
 
 import org.apache.commons.collections4.CollectionUtils;
+
+import sk.uniba.fmph.dcs.stone_age.Effect; 
 
 public final class SimpleBuilding implements Building {
   private ArrayList<Effect> requiredResources;

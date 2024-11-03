@@ -1,6 +1,6 @@
-package sk.uniba.fmph.dcs;
+package sk.uniba.fmph.dcs.stone_age;
 
-enum Effect {
+public enum Effect {
   FOOD,
   WOOD,
   CLAY,
