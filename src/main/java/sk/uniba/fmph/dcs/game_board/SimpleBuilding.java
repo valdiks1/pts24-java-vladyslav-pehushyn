@@ -9,27 +9,27 @@ import org.apache.commons.collections4.CollectionUtils;
 import sk.uniba.fmph.dcs.stone_age.Effect;
 
 public final class SimpleBuilding implements Building {
-  private ArrayList<Effect> requiredResources;
+    private ArrayList<Effect> requiredResources;
 
-  public SimpleBuilding(final Collection<Effect> resources) {
-    this.requiredResources = new ArrayList<Effect>();
-    for (Effect resource : resources) {
-      if (!resource.isResource()) {
-        throw new IllegalArgumentException("Resources must be resources");
-      }
-      this.requiredResources.add(resource);
-    }
-  }
-
-  public OptionalInt build(final Collection<Effect> resources) {
-    if (!CollectionUtils.isEqualCollection(this.requiredResources, resources)) {
-      return OptionalInt.empty();
+    public SimpleBuilding(final Collection<Effect> resources) {
+        this.requiredResources = new ArrayList<Effect>();
+        for (Effect resource : resources) {
+            if (!resource.isResource()) {
+                throw new IllegalArgumentException("Resources must be resources");
+            }
+            this.requiredResources.add(resource);
+        }
     }
 
-    int sum = 0;
-    for (Effect resource : resources) {
-      sum += resource.points();
+    public OptionalInt build(final Collection<Effect> resources) {
+        if (!CollectionUtils.isEqualCollection(this.requiredResources, resources)) {
+            return OptionalInt.empty();
+        }
+
+        int sum = 0;
+        for (Effect resource : resources) {
+            sum += resource.points();
+        }
+        return OptionalInt.of(sum);
     }
-    return OptionalInt.of(sum);
-  }
 }
