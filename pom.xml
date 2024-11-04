@@ -5,16 +5,15 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>sk.uniba.fmph.dcs</groupId>
-  <artifactId>AZUL</artifactId>
+  <artifactId>STONE_AGE</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>AZUL</name>
+  <name>STONE AGE</name>
   <url>http://www.dcs.fmph.uniba.sk/~lukotka/PTS1/pts1.htm</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.release>21</maven.compiler.release>
   </properties>
 
   <dependencies>
@@ -34,6 +33,11 @@
       <artifactId>commons-collections4</artifactId>
       <version>4.4</version>
     </dependency>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20190722</version>
+    </dependency>
   </dependencies>
   
   <build>
@@ -51,8 +55,8 @@
         </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
-        </plugin>
+          <version>3.12.1</version>
+        </plugin>                
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
@@ -79,28 +83,19 @@
           <version>3.0.0</version>
         </plugin>
         <plugin>
-            <groupId>com.theoryinpractise</groupId>
-            <artifactId>googleformatter-maven-plugin</artifactId>
-            <version>1.7.3</version>
-            <executions>
-                <execution>
-                    <id>reformat-sources</id>
-                    <configuration>
-                        <includeStale>false</includeStale>
-                        <style>GOOGLE</style>
-                        <formatMain>true</formatMain>
-                        <formatTest>true</formatTest>
-                        <filterModified>false</filterModified>
-                        <skip>false</skip>
-                        <fixImports>false</fixImports>
-                        <maxLineLength>80</maxLineLength>
-                    </configuration>
-                    <goals>
-                        <goal>format</goal>
-                    </goals>
-                    <phase>process-sources</phase>
-                </execution>
-            </executions>
+        <groupId>net.revelc.code.formatter</groupId>
+        <artifactId>formatter-maven-plugin</artifactId>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>format</goal>
+                </goals>
+                <configuration>
+                    <configFile>eclipse-java-google-style.xml</configFile>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </execution>
+        </executions>
         </plugin>
       </plugins>
     </pluginManagement>
