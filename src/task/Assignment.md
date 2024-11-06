@@ -33,10 +33,10 @@ Unit tests for Game should be solitary. Do a sociable unit test of CivilisationC
 You should use Git and produce a reasonable history of commits. Note that to work on the red classes you do not need the blue ones. You are also free to adjust the implementation of blue and green classes according to the needs of your project (but, the changes, hopefully should not be large, a good example is changing interface name, adding a new interface, ...).
 
 
+
 ## Instructions for submitting your project
 
 Send your solution to [lukotka.pts@gmail.com](lukotka.pts@gmail.com). The deadline is 30.11.2022 23:59:59. The solutions sent later will be accepted, however the number of points awarded may be reduced.
 
 Send the solution to me either as compressed folders containing the whole repository (including the hidden .git files) or as a link to private repository with read access granted (GitHub handle `relatko`). Attach a link to the public repository for the team part of the project and link PRs you have made and PRs you have reviewed. 
 
-![UML of the task](https://github.com/sdeffff/PTS_java/blob/main/src/taskFiles/pts24.png?raw=true)
