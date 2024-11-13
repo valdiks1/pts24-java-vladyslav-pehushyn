@@ -11,6 +11,10 @@ import sk.uniba.fmph.dcs.stone_age.Effect;
 /**
  * Represents the game phase where players place their figures on locations.
  * Only figure placement actions are valid during this phase.
+ * 
+ * Note: This class does not check if it's the player's turn - that validation
+ * is handled by GamePhaseController before any actions are delegated here.
+ * This separation of concerns keeps turn management logic in one place.
  */
 public class PlaceFiguresState implements InterfaceGamePhaseState {
     
