@@ -4,7 +4,7 @@ public class GameBoard {
     private String state;
 
     public GameBoard() {
-        this.statea = "Game started!";
+        this.state = "Game started!";
     }
 
     public String state() {

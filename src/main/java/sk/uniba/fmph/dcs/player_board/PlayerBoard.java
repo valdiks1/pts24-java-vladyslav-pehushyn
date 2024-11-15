@@ -3,16 +3,27 @@ package sk.uniba.fmph.dcs.player_board;
 import java.util.*;
 
 public class PlayerBoard {
-    private points;
-    private houses;
+    private int points;
+    private int houses;
+    private final int playerFigures;
 
-    public addPoints(int points) {
+    public PlayerBoard() {
+
+    }
+
+    public void addPoints(int points) {
         this.points += points;
     }
 
-    public addHouse() {
-        this.houses++;
+    public void addHouse() {
+
     }
 
+    public void addEndGamePoints() {
 
+    }
+
+    public String state() {
+        return "";
+    }
 }
