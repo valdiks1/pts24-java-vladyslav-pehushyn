@@ -1,3 +1,5 @@
+package sk.uniba.fmph.dcs.game_board;
+
 public interface FigureLocationAdaptor implements InterfaceFigureLocationInternal {
     private final InterfaceFigureLocation interfaceFigureLocation;
 

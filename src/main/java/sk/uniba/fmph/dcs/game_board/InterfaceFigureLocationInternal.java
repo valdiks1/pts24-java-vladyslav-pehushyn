@@ -1,3 +1,5 @@
+package sk.uniba.fmph.dcs.game_board;
+
 public interface InterfaceFigureLocationInternal {
     boolean placeFigures(player: Player, figureCount: int);
     HasAction tryToPlaceFigures(player: Player, count: int);

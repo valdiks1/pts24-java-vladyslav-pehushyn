@@ -1,3 +1,5 @@
+package sk.uniba.fmph.dcs.game_board;
+
 public class GameBoard {
     private String state;
 
