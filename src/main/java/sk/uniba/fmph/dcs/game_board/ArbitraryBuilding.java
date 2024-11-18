@@ -7,6 +7,7 @@ import java.util.OptionalInt;
 public final class ArbitraryBuilding implements Building {
     private final int maxNumberOfResources = 7;
 
+    @Override
     public OptionalInt build(final Collection<Effect> resources) {
         if (resources == null || resources.isEmpty() || resources.size() > maxNumberOfResources ) {
             return OptionalInt.empty();
