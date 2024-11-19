@@ -1,6 +1,6 @@
 package sk.uniba.fmph.dcs.stone_age;
 
-import java.util.Collection;
+import java.util.*;
 
 public interface InterfaceFigureLocation {
     boolean placeFigures(PlayerOrder player, int figureCount);

@@ -2,11 +2,8 @@ package sk.uniba.fmph.dcs.game_phase_controller;
 
 import java.util.Collection;
 import java.util.Map;
-import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
-import sk.uniba.fmph.dcs.stone_age.Location;
-import sk.uniba.fmph.dcs.stone_age.ActionResult;
-import sk.uniba.fmph.dcs.stone_age.HasAction;
-import sk.uniba.fmph.dcs.stone_age.Effect;
+
+import sk.uniba.fmph.dcs.stone_age.*;
 
 /**
  * Represents the game phase where players place their figures on locations.
