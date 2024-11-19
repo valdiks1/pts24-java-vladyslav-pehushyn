@@ -8,5 +8,5 @@ public interface InterfaceFigureLocation {
     ActionResult makeAction(PlayerOrder player, Collection<Effect> inputResources, Collection<Effect> outputResources);
     boolean skipAction(PlayerOrder player);
     HasAction tryToMakeAction(PlayerOrder player);
-    boolean newTurn(); // {returns true if end of game is implied by given location}
+    boolean newTurn();
 }
