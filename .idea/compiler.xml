@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
@@ -5,4 +6,18 @@
       <module name="STONE_AGE" target="21" />
     </bytecodeTargetLevel>
   </component>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="STONE_AGE" />
+      </profile>
+    </annotationProcessing>
+  </component>
+>>>>>>> d981629e1e6cf21249a19c9391a63ffe67842c50
 </project>
