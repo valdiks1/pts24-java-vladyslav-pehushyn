@@ -3,7 +3,7 @@ package sk.uniba.fmph.dcs.player_board;
 import java.util.HashMap;
 import java.util.Map;
 public class PlayerCivilizationCards {
-    private Map<EndOfGameEffect, Integer> endOfGameEffectMap;
+    private final Map<EndOfGameEffect, Integer> endOfGameEffectMap = new HashMap<>();
 
     public void addEndOfGameEffects(EndOfGameEffect[] effects){
         for (EndOfGameEffect effect : effects) {
