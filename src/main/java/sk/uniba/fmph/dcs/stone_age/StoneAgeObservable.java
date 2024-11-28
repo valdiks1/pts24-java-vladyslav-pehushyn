@@ -5,5 +5,7 @@ import java.util.*;
 
 
 public class StoneAgeObservable {
-    public notify(gameState: string)
+    public String notify(String gamestate){
+        return "";
+    };
 }
