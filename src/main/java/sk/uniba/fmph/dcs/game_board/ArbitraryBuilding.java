@@ -4,24 +4,37 @@ import sk.uniba.fmph.dcs.stone_age.Effect;
 import java.util.Collection;
 import java.util.OptionalInt;
 
-public final class ArbitraryBuilding implements Building {
-    private final int maxNumberOfResources = 7;
+public class ArbitraryBuilding implements Building {
+    private final int maxNumberOfResources;
+
+    public ArbitraryBuilding(int maxNumberOfResources) {
+        this.maxNumberOfResources = maxNumberOfResources;
+    }
 
     @Override
-    public OptionalInt build(final Collection<Effect> resources) {
-        if (resources == null || resources.isEmpty() || resources.size() > maxNumberOfResources ) {
+    public OptionalInt build(Collection<Effect> resources) {
+        if (resources.isEmpty() || resources.size() > maxNumberOfResources) {
             return OptionalInt.empty();
         }
 
-        int sum = 0;
+        // Verify all resources are valid
         for (Effect resource : resources) {
-            sum += resource.points();
+            if (!resource.isResource()) {
+                return OptionalInt.empty();
+            }
         }
-        return OptionalInt.of(sum);
+
+        // Calculate points
+        int points = 0;
+        for (Effect resource : resources) {
+            points += resource.points();
+        }
+
+        return OptionalInt.of(points);
     }
 
     @Override
     public String state() {
-        return "";
+        return String.format("ArbitraryBuilding[maxResources=%d]", maxNumberOfResources);
     }
 }
