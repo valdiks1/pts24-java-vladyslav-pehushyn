@@ -43,20 +43,18 @@ public class BuildingTile implements InterfaceFigureLocationInternal {
     }
 
     @Override
-    public ActionResult makeAction(Player player, Effect[] inputResources, Effect[] outputResources) {
+    public ActionResult makeAction(Player player, Collection<Effect> inputResources, Collection<Effect> outputResources) {
         if (figures.isEmpty() || !figures.get(0).equals(player.playerOrder())) {
             return ActionResult.FAILURE;
         }
         
-        Collection<Effect> resources = List.of(inputResources);
-        
-        OptionalInt points = building.build(resources);
+        OptionalInt points = building.build(inputResources);
         if (!points.isPresent()) {
             return ActionResult.FAILURE;
         }
         
         // Give points to player
-        player.playerBoard().giveEffect(new Effect[]{Effect.BUILDING});
+        player.playerBoard().giveEffect(List.of(Effect.BUILDING));
         return ActionResult.ACTION_DONE;
     }
 

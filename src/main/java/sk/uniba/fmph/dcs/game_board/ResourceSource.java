@@ -53,28 +53,24 @@ public final class ResourceSource implements InterfaceFigureLocationInternal {
     }
 
     @Override
-    public ActionResult makeAction(Player player, Effect[] inputResources, Effect[] outputResources) {
-        // Convert arrays to collections for existing logic
-        Collection<Effect> inputs = Arrays.asList(inputResources);
-        Collection<Effect> outputs = Arrays.asList(outputResources);
-        
+    public ActionResult makeAction(Player player, Collection<Effect> inputResources, Collection<Effect> outputResources) {
         // Verify it's this player's figures
         if (!hasFiguresFromPlayer(player.playerOrder())) {
             return ActionResult.FAILURE;
         }
 
         // Resource sources don't take input resources
-        if (!inputs.isEmpty()) {
+        if (!inputResources.isEmpty()) {
             return ActionResult.FAILURE;
         }
 
         // Resource sources must output exactly one type of resource per figure
         int playerFigureCount = countPlayerFigures(player.playerOrder());
-        if (outputs.size() != playerFigureCount) {
+        if (outputResources.size() != playerFigureCount) {
             return ActionResult.FAILURE;
         }
         
-        for (Effect output : outputs) {
+        for (Effect output : outputResources) {
             if (output != this.resource) {
                 return ActionResult.FAILURE;
             }
