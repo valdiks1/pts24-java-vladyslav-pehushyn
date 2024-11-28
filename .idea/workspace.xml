@@ -5,11 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6f0b158-5064-4651-98e6-e56cdb854849" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/ArbitraryBuilding.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/BuildingTile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/EvaluateCivilizationCardImmediateEffect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/GetCard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/GetSomethingChoice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/ToolMakerHutFields.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/VariableBuilding.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_phase_controller/AllPlayersTakeARewardState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_phase_controller/InterfaceTakeReward.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_phase_controller/WaitingForToolUseState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/player_board/EndOfGameEffect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/player_board/PlayerFigures.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/player_board/PlayerTools.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/InterfaceTakeReward.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/StoneAgeGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/sk/uniba/fmph/dcs/game_board/VariableBuildingTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_json_json_20190722.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/CivilizationCardDeck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/CivilizationCardDeck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/Building.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/CivilizationCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/CivilizationCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/CurrentThrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/CurrentThrow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/FigureLocationAdaptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/FigureLocationAdaptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/PlaceOnHutAdaptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/PlaceOnHutAdaptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/player_board/PlayerBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/player_board/PlayerBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/Effect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/ImmediateEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/ImmediateEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/InterfaceFigureLocationInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/InterfaceFigureLocationInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/InterfaceGetState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/InterfaceGetState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/InterfacePlayerBoardGameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/InterfacePlayerBoardGameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/ResourceSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/game_board/ResourceSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/StoneAgeObservable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/StoneAgeObservable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/TribeFedStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/uniba/fmph/dcs/stone_age/TribeFedStatus.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +61,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -38,15 +78,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;vlad__peh__tasks&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Vlad/java/PTS_project/pts24-java&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Merging vlad__peh__tasks",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Vlad/java/PTS_project/pts24-java"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="pts24-java" />
@@ -62,13 +102,6 @@
       </method>
     </configuration>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -79,16 +112,5 @@
       <updated>1730900339117</updated>
     </task>
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
