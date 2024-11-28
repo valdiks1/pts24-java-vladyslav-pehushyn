@@ -91,6 +91,10 @@ public final class TribeFedStatus implements InterfaceFeedTribe, InterfaceNewTur
         }
     }
 
+    public int getFields() {
+        return fields;
+    }
+
     private int calculateRequiredFood() {
         return figures.getTotalFigures() * FOOD_PER_FIGURE;
     }
