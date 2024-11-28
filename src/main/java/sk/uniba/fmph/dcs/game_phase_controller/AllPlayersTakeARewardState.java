@@ -47,7 +47,9 @@ public class AllPlayersTakeARewardState implements InterfaceGamePhaseState{
 
     @Override
     public ActionResult makeAllPlayersTakeARewardChoice(PlayerOrder player, Effect reward) {
-        return ActionResult.FAILURE;
+        return this.reward.takeReward(player, reward)
+        ? ActionResult.ACTION_DONE
+        : ActionResult.FAILURE;
     }
 
     @Override
