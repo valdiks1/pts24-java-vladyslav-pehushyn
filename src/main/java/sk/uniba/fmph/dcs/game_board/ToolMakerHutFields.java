@@ -4,7 +4,7 @@ import sk.uniba.fmph.dcs.stone_age.*;
 
 import java.util.ArrayList;
 
-public class ToolMakerHutFields  implements InterfaceNewTurn, InterfaceGetState {
+public class ToolMakerHutFields implements InterfaceGetState {
     private PlayerOrder toolMakerFigures;
     private PlayerOrder hutFigures;
     private PlayerOrder fieldsFigures;
@@ -92,7 +92,6 @@ public class ToolMakerHutFields  implements InterfaceNewTurn, InterfaceGetState 
     public boolean canPlaceOnFields(Player player){
         return fieldsFigures == null && player.playerBoard().hasFigures(1) && restrictionCounter<=restriction;
     }
-    @Override
     public void newTurn(){
         toolMakerFigures = null;
         hutFigures = null;
