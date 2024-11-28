@@ -1,10 +1,12 @@
 package sk.uniba.fmph.dcs.player_board;
 
+import org.json.JSONObject;
 import sk.uniba.fmph.dcs.stone_age.InterfaceGetState;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class PlayerTools implements InterfaceGetState {
 
@@ -56,23 +58,15 @@ public class PlayerTools implements InterfaceGetState {
 
     @Override
     public String state() {
-        StringBuilder toReturn = new StringBuilder("Player have: ");
-        for (int i = 0; i < 6; i++) {
-            if (!usedTools[i] && i != 2) {
-                toReturn.append(tools[i]).append(", ");
-            } else if (!usedTools[i]) {
-                toReturn.append(tools[i]);
-            }
-        }
-        toReturn.append(" to use.\n");
-        if(!additionalTools.isEmpty()){
-            toReturn.append("Single use tools cards: ");
-            for(int x: additionalTools){
-                toReturn.append(x).append(" ");
-            }
-            toReturn.append(".\n");
-        }
-        return toReturn.toString();
+        Map<String, Object> state = Map.of(
+                "tools", tools,
+                "usedTools", usedTools,
+                "totalToolsCount", totalToolsCount,
+                "roundToolsCount", roundToolsCount,
+                "additionalTools", additionalTools
+        );
+
+        return new JSONObject(state).toString();
     }
 
 }
