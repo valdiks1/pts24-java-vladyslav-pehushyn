@@ -7,6 +7,11 @@ import sk.uniba.fmph.dcs.stone_age.HasAction;
 import sk.uniba.fmph.dcs.stone_age.Player;
 
 public class PlaceOnHutAdaptor implements InterfaceFigureLocationInternal{
+    /*private ToolMakerHutFields toolMakerHutFields;
+
+    public PlaceOnHutAdaptor(ToolMakerHutFields toolMakerHutFields){
+        this.toolMakerHutFields = toolMakerHutFields;
+    }*/
     @Override
     public boolean placeFigures(Player player, int figureCount) {
         return false;

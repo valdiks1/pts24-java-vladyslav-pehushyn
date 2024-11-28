@@ -7,16 +7,19 @@ public class CurrentThrow implements InterfaceToolUse {
     private int throwResult;
     private Player player;
     private int dices;
-    private PlayerBoard playerBoard;
+    private InterfacePlayerBoardGameBoard playerBoard;
     private int sumScoreOfDices;
 
 
-    public CurrentThrow(Player player, Effect effect, int dices){
+    public void initiate(Player player, Effect effect, int dices){
         this.player = player;
         throwsFor = effect;
         this.dices = dices;
         this.playerBoard = this.player.playerBoard();
         sumScoreOfDices = sumDices();
+        if(!canUseTools()){
+            sumScoreOfDices /= throwsFor.points();
+        }
     }
 
     private int sumDices(){
@@ -31,12 +34,6 @@ public class CurrentThrow implements InterfaceToolUse {
     }
 
     public String state(){
-
-        switch (throwsFor){
-            case FOOD:
-
-                break;
-        }
 
         return "";
     }
