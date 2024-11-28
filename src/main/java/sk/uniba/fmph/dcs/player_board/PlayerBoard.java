@@ -4,11 +4,13 @@ import java.util.*;
 
 public class PlayerBoard {
     private int points;
-    private int houses;
+    private int houses; 
     private final int playerFigures;
 
     public PlayerBoard() {
-
+        this.points = 0;
+        this.houses = 0;
+        this.playerFigures = 5;
     }
 
     public void addPoints(int points) {
