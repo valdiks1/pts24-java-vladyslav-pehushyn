@@ -1,13 +1,14 @@
 package sk.uniba.fmph.dcs.game_board;
 
 import sk.uniba.fmph.dcs.stone_age.*;
+import java.util.Optional;
 
 public class CurrentThrow implements InterfaceToolUse {
     private Effect throwsFor;
     private int throwResult;
     private Player player;
     private int dices;
-    private PlayerBoard playerBoard;
+    private InterfacePlayerBoardGameBoard playerBoard;
     private int sumScoreOfDices;
 
 
@@ -43,9 +44,8 @@ public class CurrentThrow implements InterfaceToolUse {
 
     @Override
     public boolean useTool(int idx) {
-        playerBoard.useTool(idx);
-
-        return false;
+        Optional<Integer> toolValue = playerBoard.useTool(idx);
+        return toolValue.isPresent();
     }
 
     @Override
