@@ -42,7 +42,7 @@ public class ToolMakerHutFields  implements InterfaceNewTurn, InterfaceGetState 
     }
 
     public boolean canPlaceOnToolMaker(Player player){
-        return toolMakerFigures != null && player.playerBoard().hasFigures(1) && restrictionCounter<=restriction;
+        return toolMakerFigures == null && player.playerBoard().hasFigures(1) && restrictionCounter<=restriction;
     }
 
     public boolean placeOnHut(Player player){
@@ -56,7 +56,7 @@ public class ToolMakerHutFields  implements InterfaceNewTurn, InterfaceGetState 
     }
 
     public boolean canPlaceOnHut(Player player){
-        return hutFigures != null && player.playerBoard().hasFigures(2) && restrictionCounter<=restriction;
+        return hutFigures == null && player.playerBoard().hasFigures(2) && restrictionCounter<=restriction;
     }
 
     public boolean actionHut(Player player){
@@ -90,7 +90,7 @@ public class ToolMakerHutFields  implements InterfaceNewTurn, InterfaceGetState 
     }
 
     public boolean canPlaceOnFields(Player player){
-        return fieldsFigures != null && player.playerBoard().hasFigures(1) && restrictionCounter<=restriction;
+        return fieldsFigures == null && player.playerBoard().hasFigures(1) && restrictionCounter<=restriction;
     }
     @Override
     public void newTurn(){
