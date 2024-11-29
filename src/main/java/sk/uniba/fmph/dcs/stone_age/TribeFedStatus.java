@@ -81,7 +81,7 @@ public final class TribeFedStatus implements InterfaceFeedTribe, InterfaceNewTur
     }
 
     @Override
-    public void newTurn() {
+    public void newTurn() { //TODO --> boolean newTurn()
         tribeFed = false;
     }
 
