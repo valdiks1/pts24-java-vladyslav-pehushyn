@@ -1,8 +1,11 @@
 package sk.uniba.fmph.dcs.player_board;
 
+import org.json.JSONObject;
+import sk.uniba.fmph.dcs.stone_age.InterfaceGetState;
+
 import java.util.HashMap;
 import java.util.Map;
-public class PlayerCivilizationCards {
+public class PlayerCivilizationCards implements InterfaceGetState {
     private final Map<EndOfGameEffect, Integer> endOfGameEffectMap = new HashMap<>();
 
     public void addEndOfGameEffects(EndOfGameEffect[] effects){
@@ -40,11 +43,21 @@ public class PlayerCivilizationCards {
             if(countCurrentCards == 0){
                 break;
             }
-            sumOfEndOfGameEffects += (int) Math.pow(2, countCurrentCards);
+            int toCheck = (int) Math.pow(countCurrentCards, 2);
+            sumOfEndOfGameEffects += toCheck;
         }
 
         return sumOfEndOfGameEffects;
     }
 
+
+    @Override
+    public String state() {
+        Map<String, Object> state = Map.of(
+                "endOfGameEffectMap", endOfGameEffectMap
+        );
+
+        return new JSONObject(state).toString();
+    }
 
 }

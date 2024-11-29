@@ -3,12 +3,10 @@ package sk.uniba.fmph.dcs.player_board;
 import org.json.JSONObject;
 import sk.uniba.fmph.dcs.stone_age.InterfaceGetState;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PlayerTools implements InterfaceGetState {
+
 
     private final int[] tools = new int[3];
     private final boolean[] usedTools = new boolean[3];
@@ -16,42 +14,44 @@ public class PlayerTools implements InterfaceGetState {
     private int roundToolsCount;
     private final List<Integer> additionalTools = new ArrayList<>();
 
-    public void newTurn(){
+    public void newTurn() {
         Arrays.fill(usedTools, false);
         roundToolsCount = totalToolsCount;
+        totalToolsCount = 0;
     }
 
-    public void addTool(){
-        if(totalToolsCount < 12) {
-            totalToolsCount++;
+    public void addTool() {
+        if (totalToolsCount < 12) {
             int position = totalToolsCount % 3;
             int value = 1 + totalToolsCount / 3;
             tools[position] = value;
+            totalToolsCount++;
+            roundToolsCount++;
         }
     }
 
-    public void addSingleUseTool(int strength){
+    public void addSingleUseTool(int strength) {
         additionalTools.add(strength);
         totalToolsCount += strength;
         roundToolsCount += strength;
     }
 
-    public int useTool(int index){
-        if(index > 2){
+    public Optional<Integer> useTool(int index) {
+        if (index > 2) {
             int additionalIndex = index % 3;
             int additionalToolValue = additionalTools.get(additionalIndex);
             totalToolsCount -= additionalToolValue;
             roundToolsCount -= additionalToolValue;
             additionalTools.remove(additionalIndex);
-            return additionalToolValue;
-        }else {
+            return Optional.of(additionalToolValue);
+        } else {
             roundToolsCount = roundToolsCount - tools[index];
             usedTools[index] = true;
-            return tools[index];
+            return Optional.of(tools[index]);
         }
     }
 
-    public boolean hasSufficientTools(int goal){
+    public boolean hasSufficientTools(int goal) {
         return goal <= roundToolsCount;
     }
 
