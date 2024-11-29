@@ -14,12 +14,12 @@ public class PlaceOnHutAdaptor implements InterfaceFigureLocationInternal{
 
     @Override
     public HasAction tryToPlaceFigures(Player player, int count) {
-        return null;
+        return ActionResult.FAILURE;
     }
 
     @Override
     public ActionResult makeAction(Player player, Effect[] inputResources, Effect[] outputResources) {
-        return null;
+        return ActionResult.FAILURE;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class PlaceOnHutAdaptor implements InterfaceFigureLocationInternal{
 
     @Override
     public HasAction tryToMakeAction(Player player) {
-        return null;
+        return ActionResult.FAILURE;
     }
 
     @Override
