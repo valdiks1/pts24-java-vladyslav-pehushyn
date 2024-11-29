@@ -14,6 +14,10 @@ public class PlayerTools implements InterfaceGetState {
     private int roundToolsCount;
     private final List<Integer> additionalTools = new ArrayList<>();
 
+    public int getTotalTools() {
+        return totalToolsCount;
+    }
+
     public void newTurn(){
         Arrays.fill(usedTools, false);
         roundToolsCount = totalToolsCount;
@@ -52,7 +56,6 @@ public class PlayerTools implements InterfaceGetState {
     public boolean hasSufficientTools(int goal){
         return goal <= roundToolsCount;
     }
-
 
     @Override
     public String state() {
