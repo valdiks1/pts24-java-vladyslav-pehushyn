@@ -5,6 +5,7 @@ import sk.uniba.fmph.dcs.player_board.PlayerFigures;
 
 import java.util.Collection;
 import java.util.Map;
+import sk.uniba.fmph.dcs.player_board.PlayerFigures;
 
 public final class TribeFedStatus implements InterfaceFeedTribe, InterfaceNewTurn {
     private static final int MAX_FIELDS = 10;
@@ -82,7 +83,7 @@ public final class TribeFedStatus implements InterfaceFeedTribe, InterfaceNewTur
     }
 
     @Override
-    public void newTurn() {
+    public void newTurn() { //TODO --> boolean newTurn()
         tribeFed = false;
     }
 
@@ -90,6 +91,10 @@ public final class TribeFedStatus implements InterfaceFeedTribe, InterfaceNewTur
         if (fields < MAX_FIELDS) {
             fields++;
         }
+    }
+
+    public int getFields() {
+        return fields;
     }
 
     private int calculateRequiredFood() {
