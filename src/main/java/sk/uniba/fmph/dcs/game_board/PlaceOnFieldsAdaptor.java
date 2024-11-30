@@ -6,19 +6,20 @@ import sk.uniba.fmph.dcs.stone_age.HasAction;
 import sk.uniba.fmph.dcs.stone_age.Player;
 
 public class PlaceOnFieldsAdaptor implements InterfaceFigureLocationInternal {
-    private ToolMakerHutFields toolMakerHutFields;
-    public PlaceOnFieldsAdaptor(ToolMakerHutFields toolMakerHutFields){
-        this.toolMakerHutFields = toolMakerHutFields;
+    private final ToolMakerHutFields fields;
+    public PlaceOnFieldsAdaptor(final ToolMakerHutFields toolMakerHutFields){
+        this.fields = toolMakerHutFields;
     }
 
     @Override
     public boolean placeFigures(Player player, int figureCount) {
-        if(figureCount >= 1 && toolMakerHutFields.canPlaceOnFields(player)){
-            toolMakerHutFields.placeOnFields(player);
-            return true;
-        }else{
-            return false;
+        if(tryToPlaceFigures(player, figureCount).equals(HasAction.AUTOMATIC_ACTION_DONE)){
+            if(fields.placeOnFields(player)){
+                player.playerBoard().takeFigures(figureCount);
+                return true;
+            }
         }
+        return false;
     }
 
     @Override
@@ -27,23 +28,22 @@ public class PlaceOnFieldsAdaptor implements InterfaceFigureLocationInternal {
             return HasAction.NO_ACTION_POSSIBLE;
         }
 
-        if(toolMakerHutFields.canPlaceOnFields(player)){
-            return HasAction.WAITING_FOR_PLAYER_ACTION;
+        if(count != 1){
+            return HasAction.NO_ACTION_POSSIBLE;
         }
 
-        return HasAction.NO_ACTION_POSSIBLE;
+        if(!fields.canPlaceOnFields(player)){
+            return HasAction.NO_ACTION_POSSIBLE;
+        }
+
+        return HasAction.AUTOMATIC_ACTION_DONE;
     }
 
     @Override
     public ActionResult makeAction(Player player, Effect[] inputResources, Effect[] outputResources) {
-        if(!toolMakerHutFields.canPlaceOnFields(player)){
-            return ActionResult.FAILURE;
-        }
-
-        if(toolMakerHutFields.actionFields(player)) {
+        if(fields.actionFields(player)){
             return ActionResult.ACTION_DONE;
         }
-
         return ActionResult.FAILURE;
     }
 
@@ -54,11 +54,7 @@ public class PlaceOnFieldsAdaptor implements InterfaceFigureLocationInternal {
 
     @Override
     public HasAction tryToMakeAction(Player player) {
-        if(toolMakerHutFields.canPlaceOnFields(player)){
-            return HasAction.WAITING_FOR_PLAYER_ACTION;
-        }else{
-            return HasAction.NO_ACTION_POSSIBLE;
-        }
+        return null;
     }
 
     @Override
