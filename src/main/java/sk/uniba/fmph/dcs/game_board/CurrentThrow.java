@@ -1,5 +1,6 @@
 package sk.uniba.fmph.dcs.game_board;
 
+import org.json.JSONObject;
 import sk.uniba.fmph.dcs.stone_age.*;
 import java.util.Optional;
 
@@ -73,25 +74,14 @@ public class CurrentThrow implements InterfaceToolUse {
     }
 
     public String state(){
-        StringBuilder state = new StringBuilder();
-        state.append("Throw result: ").append(throwResult).append("\n");
-        state.append("Threw for: ").append(throwsFor.toString()).append("\n");
-        state.append("Number of dices thrown: ").append(dices).append("\n");
-        state.append("Dices throw results: ");
-        for (int i = 0; i < dicesResults.length; i++) {
-            state.append(dicesResults[i]).append(" ");
-        }
-        state.append("Throw result: ").append(Arrays.stream(dicesResults).reduce(0, Integer::sum)).append("\n");
-        state.append("\n");
-        if (toolsUsed) {
-            state.append("Tools were used.\n");
-            state.append("New throw result(after adding tools points): ").append(throwResult).append("\n");
-            state.append(throwsFor.toString()).append(" costs ").append(throwsFor.points()).append(" resources, so player got ").append(Math.floorDiv(throwResult, throwsFor.points())).append(" of them.\n");
-        }else{
-
-            state.append(throwsFor.toString()).append(" costs ").append(throwsFor.points()).append(" resources, so player got ").append(Math.floorDiv(throwResult, throwsFor.points())).append(" of them.\n");
-        }
-
-        return state.toString();
+        Map<String, Object> state = Map.of(
+                "throwsFor", throwsFor,
+                "throwResult", throwResult,
+                "player", player,
+                "dices", dices,
+                "dicesResults", dicesResults,
+                "toolsUsed", toolsUsed
+        );
+        return new JSONObject(state).toString();
     }
 }
