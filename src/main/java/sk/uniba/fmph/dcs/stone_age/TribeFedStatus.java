@@ -81,8 +81,9 @@ public final class TribeFedStatus implements InterfaceFeedTribe, InterfaceNewTur
     }
 
     @Override
-    public void newTurn() {
+    public boolean newTurn() {
         tribeFed = false;
+        return false; // Does not trigger game end
     }
 
     public void addField() {
