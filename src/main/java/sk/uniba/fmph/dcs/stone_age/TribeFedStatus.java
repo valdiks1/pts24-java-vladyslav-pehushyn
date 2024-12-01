@@ -1,6 +1,8 @@
 package sk.uniba.fmph.dcs.stone_age;
 
 import org.json.JSONObject;
+import sk.uniba.fmph.dcs.player_board.PlayerFigures;
+
 import java.util.Collection;
 import java.util.Map;
 import sk.uniba.fmph.dcs.player_board.PlayerFigures;
@@ -81,8 +83,9 @@ public final class TribeFedStatus implements InterfaceFeedTribe, InterfaceNewTur
     }
 
     @Override
-    public void newTurn() {
+    public boolean newTurn() {
         tribeFed = false;
+        return false;
     }
 
     public void addField() {

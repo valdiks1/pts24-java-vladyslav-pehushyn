@@ -1,10 +1,12 @@
-package sk.uniba.fmph.dcs.stone_age;
+package sk.uniba.fmph.dcs.game_board;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.json.JSONObject;
+import sk.uniba.fmph.dcs.stone_age.*;
+
 import java.util.Map;
 
 public final class ResourceSource implements InterfaceFigureLocationInternal {
@@ -13,7 +15,7 @@ public final class ResourceSource implements InterfaceFigureLocationInternal {
     private final int maxFigures;
     private final int maxFigureColors;
     private final ArrayList<PlayerOrder> figures;
-    
+
     public ResourceSource(String name, Effect resource, int maxFigures, int maxFigureColors) {
         if (!resource.isResourceOrFood()) {
             throw new IllegalArgumentException("Resource must be food or resource");
@@ -44,37 +46,32 @@ public final class ResourceSource implements InterfaceFigureLocationInternal {
         if (!player.playerBoard().hasFigures(count)) {
             return HasAction.NO_ACTION_POSSIBLE;
         }
-        
+
         if (canPlaceFigures(player, count)) {
             return HasAction.WAITING_FOR_PLAYER_ACTION;
         }
-        
+
         return HasAction.NO_ACTION_POSSIBLE;
     }
 
     @Override
-    public ActionResult makeAction(Player player, Effect[] inputResources, Effect[] outputResources) {
-        // Convert arrays to collections for existing logic
-        Collection<Effect> inputs = Arrays.asList(inputResources);
-        Collection<Effect> outputs = Arrays.asList(outputResources);
-        
+    public ActionResult makeAction(Player player, Collection<Effect> inputResources, Collection<Effect> outputResources) {
         // Verify it's this player's figures
         if (!hasFiguresFromPlayer(player.playerOrder())) {
             return ActionResult.FAILURE;
         }
 
         // Resource sources don't take input resources
-        if (!inputs.isEmpty()) {
+        if (!inputResources.isEmpty()) {
             return ActionResult.FAILURE;
         }
 
         // Resource sources must output exactly one type of resource per figure
         int playerFigureCount = countPlayerFigures(player.playerOrder());
-        if (outputs.size() != playerFigureCount) {
+        if (outputResources.size() != playerFigureCount) {
             return ActionResult.FAILURE;
         }
-        
-        for (Effect output : outputs) {
+        for (Effect output : outputResources) {
             if (output != this.resource) {
                 return ActionResult.FAILURE;
             }
@@ -153,11 +150,11 @@ public final class ResourceSource implements InterfaceFigureLocationInternal {
 
     public String state() {
         Map<String, Object> state = Map.of(
-            "name", name,
-            "resource", resource,
-            "maxFigures", maxFigures, 
-            "maxFigureColors", maxFigureColors,
-            "figures", figures.stream().map(PlayerOrder::getOrder).toList()
+                "name", name,
+                "resource", resource,
+                "maxFigures", maxFigures,
+                "maxFigureColors", maxFigureColors,
+                "figures", figures.stream().map(PlayerOrder::getOrder).toList()
         );
         return new JSONObject(state).toString();
     }

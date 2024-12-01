@@ -1,6 +1,7 @@
 package sk.uniba.fmph.dcs.player_board;
 
 import sk.uniba.fmph.dcs.stone_age.InterfaceGetState;
+import sk.uniba.fmph.dcs.stone_age.TribeFedStatus;
 
 public class PlayerBoard implements InterfaceGetState {
     private int points;
@@ -31,7 +32,7 @@ public class PlayerBoard implements InterfaceGetState {
         this.playerFigures = new PlayerFigures();
         this.playerTools = new PlayerTools();
         this.playerCivilisationCards = new PlayerCivilisationCards();
-        this.tribeFedStatus = new TribeFedStatus(this.playerResourcesAndFood, this.playerFigures);
+        this.tribeFedStatus = new TribeFedStatus(this.playerFigures);
 
         this.points = 0;
         this.houses = 0;
@@ -126,7 +127,7 @@ public class PlayerBoard implements InterfaceGetState {
             return;
         }
         this.points += this.playerCivilisationCards.calculateEndOfGameCivilisationCardsPoints(this.houses,
-                this.playerTools.getTotalTools(), this.tribeFedStatus.getFieldsCount(),
+                this.playerTools.getTools(), this.tribeFedStatus.getFields(),
                 this.playerFigures.getTotalFigures());
         this.points += this.playerResourcesAndFood.numberOfResourcesForFinalPoints();
 

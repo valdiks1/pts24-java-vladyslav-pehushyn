@@ -2,23 +2,26 @@ package sk.uniba.fmph.dcs.player_board;
 
 import org.junit.Test;
 import sk.uniba.fmph.dcs.stone_age.Effect;
+import sk.uniba.fmph.dcs.stone_age.TribeFedStatus;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 public class PlayerBoardGameBoardFacadeTest {
     @Test
     public void doNotFeedThisTurnTest() {
-        PlayerResourcesAndFood prf = new PlayerResourcesAndFood(0);
-        PlayerFigures pf = new PlayerFigures();
-        TribeFedStatus tfs = new TribeFedStatus(prf, pf);
-        PlayerBoard pb = new PlayerBoard(new PlayerCivilisationCards(), pf, prf, new PlayerTools(), tfs);
+        PlayerResourcesAndFood prf = new PlayerResourcesAndFood();
+        PlayerFigures figures = new PlayerFigures();
+        TribeFedStatus tribeFedStatus = new TribeFedStatus(figures);
+        PlayerBoard pb = new PlayerBoard(new PlayerCivilisationCards(), figures, prf, new PlayerTools(), tribeFedStatus);
         PlayerBoardGameBoardFacade PBGBF = new PlayerBoardGameBoardFacade(pb);
         pb.getPlayerResourcesAndFood()
-                .giveResources(new Effect[] { Effect.FOOD, Effect.FOOD, Effect.FOOD, Effect.FOOD, Effect.FOOD });
+                .giveResources(List.of(new Effect[]{Effect.FOOD, Effect.FOOD, Effect.FOOD, Effect.FOOD, Effect.FOOD}));
         pb.getPlayerResourcesAndFood()
-                .giveResources(new Effect[] { Effect.WOOD, Effect.CLAY, Effect.STONE, Effect.GOLD, Effect.WOOD });
+                .giveResources(List.of(new Effect[]{Effect.WOOD, Effect.CLAY, Effect.STONE, Effect.GOLD, Effect.WOOD}));
+        Collection<Effect> mats = Arrays.asList(Effect.WOOD, Effect.CLAY, Effect.STONE, Effect.GOLD);
         boolean ans = PBGBF.doNotFeedThisTurn();
         assert !ans;
 
@@ -39,9 +42,6 @@ public class PlayerBoardGameBoardFacadeTest {
         PBGBF.newTurn();
         ans = PBGBF.feedTribeIfEnoughFood();
         assert !ans;
-        Collection<Effect> food = Arrays.asList(Effect.WOOD, Effect.CLAY, Effect.STONE, Effect.GOLD, Effect.WOOD);
-        ans = PBGBF.feedTribe(food);
-        assert ans;
         ans = PBGBF.doNotFeedThisTurn();
         assert !ans;
         points = pb.addPoints(0);
@@ -50,7 +50,7 @@ public class PlayerBoardGameBoardFacadeTest {
         PBGBF.newTurn();
         ans = PBGBF.feedTribeIfEnoughFood();
         assert !ans;
-        ans = PBGBF.feedTribe(food);
+        ans = PBGBF.feedTribe(mats);
         assert !ans;
         ans = PBGBF.doNotFeedThisTurn();
         assert ans;

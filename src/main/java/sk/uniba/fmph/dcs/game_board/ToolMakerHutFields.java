@@ -1,19 +1,20 @@
 package sk.uniba.fmph.dcs.game_board;
 
+import org.json.JSONObject;
 import sk.uniba.fmph.dcs.stone_age.*;
 
 import java.util.ArrayList;
+import java.util.Map;
 
-public class ToolMakerHutFields implements InterfaceGetState {
+public class ToolMakerHutFields{
     private PlayerOrder toolMakerFigures;
     private PlayerOrder hutFigures;
     private PlayerOrder fieldsFigures;
 
-    private int restriction;
+    private final int restriction;
 
-    private int restrictionCounter;
 
-    public ToolMakerHutFields(int numberOfPlayers){
+    public ToolMakerHutFields(final int numberOfPlayers){
         if(numberOfPlayers<4){
             this.restriction = 2;
         }else{
@@ -21,17 +22,33 @@ public class ToolMakerHutFields implements InterfaceGetState {
         }
     }
 
-    public boolean placeOnToolMaker(Player player){
+    private boolean checkRestriction(){
+        int result = 0;
+        if(toolMakerFigures != null) {
+            result++;
+        }
+        if(fieldsFigures != null){
+            result++;
+        }
+        if(hutFigures != null){
+            result++;
+        }
+
+        return result < restriction;
+    }
+
+
+
+    public boolean placeOnToolMaker(final Player player){
         if(!canPlaceOnToolMaker(player)){
             return false;
         }
 
         toolMakerFigures = player.playerOrder();
-        restrictionCounter++;
-        return player.playerBoard().takeFigures(1);
+        return true;
     }
 
-    public boolean actionToolMaker(Player player){
+    public boolean actionToolMaker(final Player player){
         if(!player.playerOrder().equals(toolMakerFigures)){
             return false;
         }
@@ -40,26 +57,25 @@ public class ToolMakerHutFields implements InterfaceGetState {
         player.playerBoard().giveEffect(list);
         return true;
     }
-
-    public boolean canPlaceOnToolMaker(Player player){
-        return toolMakerFigures == null && player.playerBoard().hasFigures(1) && restrictionCounter<=restriction;
+    //
+    public boolean canPlaceOnToolMaker(final Player player){
+        return toolMakerFigures == null && checkRestriction();
     }
 
-    public boolean placeOnHut(Player player){
+    public boolean placeOnHut(final Player player){
         if(!canPlaceOnHut(player)){
             return false;
         }
 
         hutFigures = player.playerOrder();
-        restrictionCounter++;
-        return player.playerBoard().takeFigures(2);
+        return true;
     }
 
-    public boolean canPlaceOnHut(Player player){
-        return hutFigures == null && player.playerBoard().hasFigures(2) && restrictionCounter<=restriction;
+    public boolean canPlaceOnHut(final Player player){
+        return hutFigures == null && checkRestriction();
     }
 
-    public boolean actionHut(Player player){
+    public boolean actionHut(final Player player){
         if(!player.playerOrder().equals(hutFigures)){
             return false;
         }
@@ -68,18 +84,17 @@ public class ToolMakerHutFields implements InterfaceGetState {
         return true;
     }
 
-    public boolean placeOnFields(Player player){
+    public boolean placeOnFields(final Player player){
         if(!canPlaceOnFields(player)){
             return false;
         }
 
         fieldsFigures = player.playerOrder();
-        restrictionCounter++;
-        return player.playerBoard().takeFigures(1);
+        return true;
 
     }
 
-    public boolean actionFields(Player player){
+    public boolean actionFields(final Player player){
         if(!player.playerOrder().equals(fieldsFigures)){
             return false;
         }
@@ -89,29 +104,22 @@ public class ToolMakerHutFields implements InterfaceGetState {
         return true;
     }
 
-    public boolean canPlaceOnFields(Player player){
-        return fieldsFigures == null && player.playerBoard().hasFigures(1) && restrictionCounter<=restriction;
+    public boolean canPlaceOnFields(final Player player){
+        return fieldsFigures == null && checkRestriction();
     }
-    public void newTurn(){
+    public boolean newTurn(){
         toolMakerFigures = null;
         hutFigures = null;
         fieldsFigures = null;
-        restrictionCounter = 0;
+        return true;
     }
 
-    @Override
     public String state(){
-        StringBuilder builder = new StringBuilder();
-        if(toolMakerFigures != null){
-            builder.append("Player number " + toolMakerFigures.getOrder() + "upgraded his tools by one point.\n");
-        }
-        if(hutFigures != null){
-            builder.append("Player number " + hutFigures.getOrder() + "got extra figure.\n");
-        }
-        if(fieldsFigures != null){
-            builder.append("Player number " + fieldsFigures.getOrder() + "increased his agricultural track by one point.\n");
-        }
-        return builder.toString();
+        Map<String, String> state = Map.of(
+                "toolMakerFigures", toolMakerFigures.toString(),
+                "hutFigures", hutFigures.toString(),
+                "fieldsFigures", fieldsFigures.toString());
+        return new JSONObject(state).toString();
     }
 
 
