@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import sk.uniba.fmph.dcs.stone_age.*;
+
+import java.util.List;
 import java.util.Optional;
 
 public class CurrentThrowTest {
@@ -55,7 +57,7 @@ public class CurrentThrowTest {
         MockPlayerBoard mockPlayerBoard = new MockPlayerBoard();
         // Mocking a player
         mockPlayer = new MockPlayer(0, mockPlayerBoard);
-
+        mockPlayer.playerBoard().giveEffect(List.of(new Effect[]{Effect.ONE_TIME_TOOL2}));
         // Mocking an effect (assuming Effect is an enum or a class)
         mockEffect = Effect.WOOD;
     }
