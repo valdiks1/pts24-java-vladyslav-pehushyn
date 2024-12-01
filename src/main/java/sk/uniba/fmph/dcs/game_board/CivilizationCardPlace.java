@@ -111,7 +111,7 @@ public class CivilizationCardPlace implements InterfaceFigureLocationInternal {
         player.playerBoard().giveCard(currentCivilizationCard);
         if (currentCivilizationCard != null) {
             for (ImmediateEffect effect : currentCivilizationCard.getImmediateEffectType()) {
-                evaluateCivilizationCardImmediateEffect.performEffect(player, effect);
+                evaluateCivilizationCardImmediateEffect.performEffect(player, Effect.CARD); // Default to CARD effect
             }
         }
         if (!outputResources.isEmpty()) {

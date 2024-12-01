@@ -5,8 +5,10 @@ import sk.uniba.fmph.dcs.stone_age.Effect;
 import sk.uniba.fmph.dcs.stone_age.Player;
 import sk.uniba.fmph.dcs.stone_age.HasAction;
 import sk.uniba.fmph.dcs.stone_age.ActionResult;
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.OptionalInt;
 import org.json.JSONObject;
@@ -48,13 +50,15 @@ public class BuildingTile implements InterfaceFigureLocationInternal {
             return ActionResult.FAILURE;
         }
         
-        OptionalInt points = building.build(inputResources);
+        Collection<Effect> resources = new ArrayList<>(inputResources);
+        
+        OptionalInt points = building.build(resources);
         if (!points.isPresent()) {
             return ActionResult.FAILURE;
         }
         
         // Give points to player
-        player.playerBoard().giveEffect(List.of(Effect.BUILDING));
+        player.playerBoard().giveEffect(Collections.singletonList(Effect.BUILDING));
         return ActionResult.ACTION_DONE;
     }
 
