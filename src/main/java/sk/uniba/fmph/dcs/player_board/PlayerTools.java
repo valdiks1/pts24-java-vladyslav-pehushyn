@@ -8,16 +8,23 @@ import java.util.*;
 public class PlayerTools implements InterfaceGetState {
 
 
-    private final int[] tools = new int[3];
-    private final boolean[] usedTools = new boolean[3];
+    private final int[] tools;
+    private final boolean[] usedTools;
     private int totalToolsCount;
     private int roundToolsCount;
-    private final List<Integer> additionalTools = new ArrayList<>();
+    private final List<Integer> additionalTools;
+
+    public PlayerTools(){
+        this.tools  = new int[3];
+        this.usedTools = new boolean[3];
+        this.additionalTools  = new ArrayList<>();
+        Arrays.fill(tools, 0);
+        Arrays.fill(usedTools, false);
+    }
 
     public void newTurn() {
         Arrays.fill(usedTools, false);
         roundToolsCount = totalToolsCount;
-        totalToolsCount = 0;
     }
 
     public void addTool() {
@@ -69,4 +76,23 @@ public class PlayerTools implements InterfaceGetState {
         return new JSONObject(state).toString();
     }
 
+    public int getTotalToolsCount() {
+        return totalToolsCount;
+    }
+
+    public boolean[] getUsedTools() {
+        return usedTools;
+    }
+
+    public int[] getTools() {
+        return tools;
+    }
+
+    public List<Integer> getAdditionalTools() {
+        return additionalTools;
+    }
+
+    public int getRoundToolsCount() {
+        return roundToolsCount;
+    }
 }
