@@ -44,7 +44,7 @@ public class VariableBuilding implements Building {
 
     @Override
     public String state() {
-        return String.format("VariableBuilding[resources=%d,types=%d]", 
-            numberOfResources, numberOfResourceTypes);
+        return String.format("VariableBuilding[resources=%d,types=%d]",
+                numberOfResources, numberOfResourceTypes);
     }
 }

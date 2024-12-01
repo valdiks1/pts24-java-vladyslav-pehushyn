@@ -29,7 +29,7 @@ public class ArbitraryBuilding implements Building {
         for (Effect resource : resources) {
             points += resource.points();
         }
-        
+
         return OptionalInt.of(points);
     }
 
