@@ -14,6 +14,8 @@ public class CurrentThrow implements InterfaceToolUse {
     private int dices;
     private int[] dicesResults;
     private boolean toolsUsed = false;
+    private boolean finished = false;
+
 
     public void initiate(Player player, Effect effect, int dices){
         this.throwsFor = effect;
@@ -22,34 +24,14 @@ public class CurrentThrow implements InterfaceToolUse {
         int[] dicesResults = throw_.throw_(dices);
         this.dicesResults = dicesResults;
         throwResult = Arrays.stream(dicesResults).reduce(0, Integer::sum);
-        boolean toolsUsed = false;
-        if (canUseTools()){
-            System.out.println("You can use tools to get the +1 of " + throwsFor.toString() + ". Do you want to use them? (Yes/No)");
-            Scanner scanner = new Scanner(System.in);
-            String answer = scanner.nextLine();
-            if(answer.equals("Yes")){
-                toolsUsed = useTool(throwResult % throwsFor.points());
-            }
-        }
-
-        if (!toolsUsed){
-            Collection<Effect> effects = new ArrayList<>();
-            for (int i = 0; i < Math.floorDiv(throwResult, throwsFor.points()); i++) {
-                effects.add(throwsFor);
-            }
-            player.playerBoard().takeResources(effects);
-        }else{
-            Collection<Effect> effects = new ArrayList<>();
-            throwResult += throwResult % throwsFor.points();
-            for (int i = 0; i < Math.floorDiv(throwResult, throwsFor.points()); i++) {
-                effects.add(throwsFor);
-            }
-            player.playerBoard().takeResources(effects);
-        }
     }
 
     @Override
     public boolean useTool(int idx) {
+        if (this.finished) {
+            return false;
+        }
+
         Optional<Integer> a = player.playerBoard().useTool(idx);
         if(a.isPresent()){
             throwResult += a.get();
@@ -61,15 +43,50 @@ public class CurrentThrow implements InterfaceToolUse {
 
     @Override
     public boolean canUseTools() {
-        int goal = throwResult % throwsFor.points();
-        if (goal == 0){
-            return false;
-        }
-        return player.playerBoard().hasSufficientTools(goal);
+        return this.player.playerBoard().hasSufficientTools(1);
     }
 
     @Override
     public boolean finishUsingTools() {
+        if (this.finished) {
+            return false;
+        }
+
+        if (!throwsFor.isResourceOrFood()){
+            return false;
+        }
+        List<Effect> effects = new ArrayList<>();
+
+        switch(throwsFor){
+            case WOOD:
+                for (int i = 0; i < Math.floorDiv(throwResult, throwsFor.points()); i++) {
+                    effects.add(Effect.WOOD);
+                }
+                break;
+            case CLAY:
+                for (int i = 0; i < Math.floorDiv(throwResult, throwsFor.points()); i++) {
+                    effects.add(Effect.CLAY);
+                }
+                break;
+            case STONE:
+                for (int i = 0; i < Math.floorDiv(throwResult, throwsFor.points()); i++) {
+                    effects.add(Effect.STONE);
+                }
+                break;
+            case GOLD:
+                for (int i = 0; i < Math.floorDiv(throwResult, throwsFor.points()); i++) {
+                    effects.add(Effect.GOLD);
+                }
+                break;
+            case FOOD:
+                for (int i = 0; i < Math.floorDiv(throwResult, throwsFor.points()); i++) {
+                    effects.add(Effect.FOOD);
+                }
+            default:
+                break;
+        }
+
+        player.playerBoard().giveEffect(effects);
         return true;
     }
 
@@ -85,3 +102,4 @@ public class CurrentThrow implements InterfaceToolUse {
         return new JSONObject(state).toString();
     }
 }
+
