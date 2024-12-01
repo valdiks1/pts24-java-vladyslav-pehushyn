@@ -49,11 +49,11 @@ public class GameBoard implements InterfaceGetState {
         locations.put(Location.BUILDING_TILE4, new BuildingTile(buildings[3]));
 
         // Civilization card slots
-        CivilisationCardDeck deck = new CivilisationCardDeck(civilizationCards);
-        var ccp1 = new CivilizationCardPlace(null, deck, 1);
-        var ccp2 = new CivilizationCardPlace(ccp1, deck, 2);
-        var ccp3 = new CivilizationCardPlace(ccp2, deck, 3);
-        var ccp4 = new CivilizationCardPlace(ccp3, deck, 4);
+        CivilizationCardDeck deck = new CivilizationCardDeck();
+        var ccp1 = new CivilizationCardPlace(1, new ArrayList<>(), deck, new GetCard(deck));
+        var ccp2 = new CivilizationCardPlace(2, new ArrayList<>(), deck, new GetCard(deck));
+        var ccp3 = new CivilizationCardPlace(3, new ArrayList<>(), deck, new GetCard(deck));
+        var ccp4 = new CivilizationCardPlace(4, new ArrayList<>(), deck, new GetCard(deck));
 
         locations.put(Location.CIVILISATION_CARD1, ccp1);
         locations.put(Location.CIVILISATION_CARD2, ccp2);
