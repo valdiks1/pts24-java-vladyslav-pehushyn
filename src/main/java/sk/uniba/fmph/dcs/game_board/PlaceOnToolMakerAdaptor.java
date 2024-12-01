@@ -68,4 +68,9 @@ private final ToolMakerHutFields toolMakerHutFields;
     public boolean newTurn() {
         return false;
     }
+
+    @Override
+    public String state() {
+        return "{}"; // Minimal implementation
+    }
 }

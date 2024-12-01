@@ -36,4 +36,9 @@ public class PlaceOnHutAdaptor implements InterfaceFigureLocationInternal{
     public boolean newTurn() {
         return false;
     }
+
+    @Override
+    public String state() {
+        return "{}"; // Minimal implementation
+    }
 }
