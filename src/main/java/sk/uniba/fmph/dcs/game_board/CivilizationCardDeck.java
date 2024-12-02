@@ -17,12 +17,13 @@ public class CivilizationCardDeck {
         return empty;
     }
 
-    public String state(){
+    public String state() {
         List<CivilizationCard> result = new ArrayList<>();
-        while(!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             result.add(stack.pop());
         }
         Collections.reverse(result);
         return result.toString();
+
     }
 }
