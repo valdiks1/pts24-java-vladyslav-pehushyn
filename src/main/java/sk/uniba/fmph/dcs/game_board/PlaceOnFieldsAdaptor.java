@@ -115,4 +115,3 @@ public class PlaceOnFieldsAdaptor implements InterfaceFigureLocationInternal {
         return fields.state();
     }
 }
-

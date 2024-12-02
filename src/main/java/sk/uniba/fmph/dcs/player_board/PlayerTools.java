@@ -49,58 +49,58 @@ public class PlayerTools implements InterfaceGetState {
 
 
 
-    public Optional<Integer> useTool(int index) {
-        Optional<Integer> toReturn = Optional.empty();
-        if(index >= maxToolsCount){
+        public Optional<Integer> useTool(int index) {
+            Optional<Integer> toReturn = Optional.empty();
+            if(index >= maxToolsCount){
+                return toReturn;
+            }
+            if (index > 2){
+                if(tools[index] != -1){
+                    toReturn = Optional.of(tools[index]);
+                    totalToolsCount -= tools[index];
+                    roundToolsCount -= tools[index];
+                    tools[index] = -1;
+                }
+            } else {
+                if(tools[index] != -1 && !usedTools[index]) {
+                    roundToolsCount = roundToolsCount - tools[index];
+                    usedTools[index] = true;
+                    toReturn = Optional.of(tools[index]);
+                }
+
+            }
             return toReturn;
         }
-        if (index > 2){
-            if(tools[index] != -1){
-                 toReturn = Optional.of(tools[index]);
-                 totalToolsCount -= tools[index];
-                 roundToolsCount -= tools[index];
-                 tools[index] = -1;
-            }
-        } else {
-            if(tools[index] != -1 && !usedTools[index]) {
-                roundToolsCount = roundToolsCount - tools[index];
-                usedTools[index] = true;
-                toReturn = Optional.of(tools[index]);
-            }
 
+        public boolean hasSufficientTools(int goal){
+            return goal <= roundToolsCount;
         }
-        return toReturn;
-    }
-
-    public boolean hasSufficientTools(int goal){
-        return goal <= roundToolsCount;
-    }
 
 
-    @Override
-    public String state() {
-        Map<String, Object> state = Map.of(
-                "tools", tools,
-                "usedTools", usedTools,
-                "totalToolsCount", totalToolsCount,
-                "roundToolsCount", roundToolsCount
-        );
-        return new JSONObject(state).toString();
-    }
+        @Override
+        public String state() {
+            Map<String, Object> state = Map.of(
+                    "tools", tools,
+                    "usedTools", usedTools,
+                    "totalToolsCount", totalToolsCount,
+                    "roundToolsCount", roundToolsCount
+            );
+            return new JSONObject(state).toString();
+        }
 
-    public int getTotalToolsCount() {
-        return totalToolsCount;
-    }
+        public int getTotalToolsCount() {
+            return totalToolsCount;
+        }
 
-    public boolean[] getUsedTools() {
-        return usedTools;
-    }
+        public boolean[] getUsedTools() {
+            return usedTools;
+        }
 
-    public int[] getTools() {
-        return tools;
-    }
+        public int[] getTools() {
+            return tools;
+        }
 
-    public int getRoundToolsCount() {
-        return roundToolsCount;
+        public int getRoundToolsCount() {
+            return roundToolsCount;
+        }
     }
-}

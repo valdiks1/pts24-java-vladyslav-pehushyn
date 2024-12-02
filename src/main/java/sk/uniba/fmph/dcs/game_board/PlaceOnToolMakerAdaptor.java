@@ -109,7 +109,7 @@ public class PlaceOnToolMakerAdaptor implements InterfaceFigureLocationInternal 
     public boolean newTurn() {
         return false;
     }
-  
+
     /**
      * Returns the current state of the ToolMaker location as a string.
      *
