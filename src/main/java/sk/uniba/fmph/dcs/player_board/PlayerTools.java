@@ -6,19 +6,17 @@ import sk.uniba.fmph.dcs.stone_age.InterfaceGetState;
 import java.util.*;
 
 public class PlayerTools implements InterfaceGetState {
-
-
     private final int[] tools;
     private final boolean[] usedTools;
+    private final int maxMultiplyUseTools = 3;
+    private final int maxToolsCount = 6;
     private int totalToolsCount;
     private int roundToolsCount;
-    private final List<Integer> additionalTools;
 
     public PlayerTools(){
-        this.tools  = new int[3];
+        this.tools  = new int[6];
         this.usedTools = new boolean[3];
-        this.additionalTools  = new ArrayList<>();
-        Arrays.fill(tools, 0);
+        Arrays.fill(tools, -1);
         Arrays.fill(usedTools, false);
     }
 
@@ -38,24 +36,36 @@ public class PlayerTools implements InterfaceGetState {
     }
 
     public void addSingleUseTool(int strength) {
-        additionalTools.add(strength);
+        for(int i = maxMultiplyUseTools - 1; i < tools.length; i++){
+            if(tools[i] == -1){
+                tools[i] = strength;
+                break;
+            }
+        }
         totalToolsCount += strength;
         roundToolsCount += strength;
     }
 
     public Optional<Integer> useTool(int index) {
-        if (index > 2) {
-            int additionalIndex = index % 3;
-            int additionalToolValue = additionalTools.get(additionalIndex);
-            totalToolsCount -= additionalToolValue;
-            roundToolsCount -= additionalToolValue;
-            additionalTools.remove(additionalIndex);
-            return Optional.of(additionalToolValue);
-        } else {
-            roundToolsCount = roundToolsCount - tools[index];
-            usedTools[index] = true;
-            return Optional.of(tools[index]);
+        Optional<Integer> toReturn = Optional.empty();
+        if(index >= maxToolsCount){
+            return toReturn;
         }
+        if (index > 2){
+            if(tools[index] != -1){
+                 toReturn = Optional.of(tools[index]);
+                 totalToolsCount -= tools[index];
+                 roundToolsCount -= tools[index];
+                 tools[index] = -1;
+            }
+        } else {
+            if(tools[index] != -1 && !usedTools[index]) {
+                roundToolsCount = roundToolsCount - tools[index];
+                usedTools[index] = true;
+                toReturn = Optional.of(tools[index]);
+            }
+        }
+        return toReturn;
     }
 
     public boolean hasSufficientTools(int goal) {
@@ -69,8 +79,7 @@ public class PlayerTools implements InterfaceGetState {
                 "tools", tools,
                 "usedTools", usedTools,
                 "totalToolsCount", totalToolsCount,
-                "roundToolsCount", roundToolsCount,
-                "additionalTools", additionalTools
+                "roundToolsCount", roundToolsCount
         );
 
         return new JSONObject(state).toString();
@@ -86,10 +95,6 @@ public class PlayerTools implements InterfaceGetState {
 
     public int[] getTools() {
         return tools;
-    }
-
-    public List<Integer> getAdditionalTools() {
-        return additionalTools;
     }
 
     public int getRoundToolsCount() {
