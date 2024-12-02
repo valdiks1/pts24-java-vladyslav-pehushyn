@@ -2,6 +2,7 @@ package sk.uniba.fmph.dcs.game_board;
 
 import sk.uniba.fmph.dcs.stone_age.*;
 
+
 public class PlaceOnFieldsAdaptor implements InterfaceFigureLocationInternal {
     private final ToolMakerHutFields fields;
     /**
@@ -104,7 +105,6 @@ public class PlaceOnFieldsAdaptor implements InterfaceFigureLocationInternal {
     public boolean newTurn() {
         return false;
     }
-
     /**
      * Returns the current state of the fields location as a string.
      *
@@ -115,3 +115,4 @@ public class PlaceOnFieldsAdaptor implements InterfaceFigureLocationInternal {
         return fields.state();
     }
 }
+

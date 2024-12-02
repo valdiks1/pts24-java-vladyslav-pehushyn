@@ -1,9 +1,10 @@
 package sk.uniba.fmph.dcs.player_board;
 
-import org.json.JSONObject;
 import sk.uniba.fmph.dcs.stone_age.InterfaceGetState;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class PlayerTools implements InterfaceGetState {
     private final int[] tools;
@@ -20,18 +21,21 @@ public class PlayerTools implements InterfaceGetState {
         Arrays.fill(usedTools, false);
     }
 
-    public void newTurn() {
+    public void newTurn(){
         Arrays.fill(usedTools, false);
         roundToolsCount = totalToolsCount;
     }
 
-    public void addTool() {
-        if (totalToolsCount < 12) {
+    public int getTools() {
+        return this.totalToolsCount;
+    }
+
+    public void addTool(){
+        if(totalToolsCount < 12) {
+            totalToolsCount++;
             int position = totalToolsCount % 3;
             int value = 1 + totalToolsCount / 3;
             tools[position] = value;
-            totalToolsCount++;
-            roundToolsCount++;
         }
     }
 
@@ -42,9 +46,8 @@ public class PlayerTools implements InterfaceGetState {
                 break;
             }
         }
-        totalToolsCount += strength;
-        roundToolsCount += strength;
-    }
+
+
 
     public Optional<Integer> useTool(int index) {
         Optional<Integer> toReturn = Optional.empty();
@@ -64,11 +67,12 @@ public class PlayerTools implements InterfaceGetState {
                 usedTools[index] = true;
                 toReturn = Optional.of(tools[index]);
             }
+
         }
         return toReturn;
     }
 
-    public boolean hasSufficientTools(int goal) {
+    public boolean hasSufficientTools(int goal){
         return goal <= roundToolsCount;
     }
 
@@ -81,7 +85,6 @@ public class PlayerTools implements InterfaceGetState {
                 "totalToolsCount", totalToolsCount,
                 "roundToolsCount", roundToolsCount
         );
-
         return new JSONObject(state).toString();
     }
 

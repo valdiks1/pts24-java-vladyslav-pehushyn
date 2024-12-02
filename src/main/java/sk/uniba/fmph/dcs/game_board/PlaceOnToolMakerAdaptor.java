@@ -1,6 +1,8 @@
 package sk.uniba.fmph.dcs.game_board;
 
+
 import sk.uniba.fmph.dcs.stone_age.*;
+
 
 public class PlaceOnToolMakerAdaptor implements InterfaceFigureLocationInternal {
     private final ToolMakerHutFields toolMaker;
@@ -107,7 +109,7 @@ public class PlaceOnToolMakerAdaptor implements InterfaceFigureLocationInternal 
     public boolean newTurn() {
         return false;
     }
-
+  
     /**
      * Returns the current state of the ToolMaker location as a string.
      *

@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class CivilizationCard {
-    List<ImmediateEffect> immediateEffectType;
-    List<EndOfGameEffect> EndOfGameEffectType;
+    private List<ImmediateEffect> immediateEffectType;
+    private List<EndOfGameEffect> EndOfGameEffectType;
 
     public CivilizationCard(List<ImmediateEffect> immediateEffectType, List<EndOfGameEffect> EndOfGameEffectType){
         this.immediateEffectType = immediateEffectType;
