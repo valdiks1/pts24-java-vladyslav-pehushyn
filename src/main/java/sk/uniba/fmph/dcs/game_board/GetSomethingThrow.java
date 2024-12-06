@@ -1,7 +1,6 @@
 package sk.uniba.fmph.dcs.game_board;
 
 import sk.uniba.fmph.dcs.stone_age.Effect;
-import sk.uniba.fmph.dcs.stone_age.InterfacePlayerBoardGameBoard;
 import sk.uniba.fmph.dcs.stone_age.Player;
 
 public class GetSomethingThrow implements EvaluateCivilizationCardImmediateEffect {
@@ -13,7 +12,7 @@ public class GetSomethingThrow implements EvaluateCivilizationCardImmediateEffec
 
     @Override
     public boolean performEffect(Player player, Effect choice) {
-        if(resource == choice){
+        if(resource.isResource() && resource == choice){
             CurrentThrow currentThrow = new CurrentThrow();
             currentThrow.initiate(player, choice, 2);
             return true;
